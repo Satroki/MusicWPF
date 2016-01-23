@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="MusicWPF.MusicItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MusicWPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="34" d:DesignWidth="390">
+    <UserControl.Resources>
+        <local:TextOverVC x:Key="TOVC"/>
+    </UserControl.Resources>
+    <UserControl.ToolTip>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="{Binding MusicFile.Artist,StringFormat='歌手：{0}'}"/>
+            <TextBlock Text="{Binding MusicFile.DisplayName,StringFormat='标题：{0}'}"/>
+            <TextBlock Text="{Binding MusicFile.Album,StringFormat='专辑：{0}'}"/>
+            <TextBlock Text="{Binding MusicFile.FullName,StringFormat='路径：{0}'}"/>
+        </StackPanel>
+    </UserControl.ToolTip>
+    <Border BorderThickness="0,0,0,1" VerticalAlignment="Top">
+        <Border.BorderBrush>
+            <SolidColorBrush Color="White" Opacity="0.3"/>
+        </Border.BorderBrush>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="2,0,0,0" Orientation="Horizontal">
+                <TextBlock Text="{Binding MusicFile.Artist,Converter={StaticResource TOVC},ConverterParameter=14}" ToolTip="{Binding MusicFile.Artist}"/>
+                <TextBlock Text=" -- "/>
+                <TextBlock Text="{Binding MusicFile.DisplayName}" ToolTip="{Binding MusicFile.DisplayName}"/>
+            </StackPanel>
+            <TextBlock Text="{Binding MusicFile.Album,StringFormat='- {0}',Converter={StaticResource TOVC},ConverterParameter=22}" 
+                       ToolTip="{Binding MusicFile.Album}"
+                       Grid.Row="1" HorizontalAlignment="Left" 
+                       VerticalAlignment="Center" Margin="5,0,0,0"
+                       Opacity="0.7" FontSize="8pt"/>
+            <TextBlock Grid.Row="1" Margin="0,2" HorizontalAlignment="Right" Opacity="0.7" FontSize="8pt">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{2}   {0:f2} MB   {1:mm\:ss} ">
+                        <Binding Path="MusicFile.FileSize_MB"/>
+                        <Binding Path="MusicFile.Duration"/>
+                        <Binding Path="MusicFile.HasLrc"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </Grid>
+    </Border>
+</UserControl>
