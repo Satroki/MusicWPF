@@ -61,9 +61,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" FontSize="22.5pt" x:Name="lLrc" 
-               Content="{Binding LrcContent}" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Foreground="#FFE2FFB7" Padding="0"
-               Height="38" Background="Transparent">
+        <Label Grid.Row="0" FontSize="22.5pt" x:Name="lLrc"
+               Content="{Binding LrcContent}" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Foreground="#FFE2FFB7"
+               Height="38" Background="#B0000000" Padding="5,0">
             <Label.ContextMenu>
                 <ContextMenu FontSize="9pt">
                     <MenuItem Header="复制" Click="miCopyLrc_Click"/>

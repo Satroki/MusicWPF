@@ -17,8 +17,7 @@ namespace MusicWPF
         public LyricWin(MusicFile mf)
         {
             InitializeComponent();
-            var dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            lrcTemp = Path.Combine(dir, @"Netease\CloudMusic\Temp");
+            lrcTemp = @"D:\Program Files (x86)\Netease\CloudMusic\Netease\CloudMusic\Temp";
             fsw.Path = lrcTemp;
             fsw.Created += Fsw_Created;
             loadMF(mf);

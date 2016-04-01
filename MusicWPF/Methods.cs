@@ -143,7 +143,7 @@ namespace MusicWPF
             try
             {
                 var str = File.ReadAllText(fileName, Encoding.UTF8);
-                if (fileName.ToUpper().EndsWith(".lrc"))
+                if (fileName.ToUpper().EndsWith(".LRC"))
                     return str;
                 else
                 {
