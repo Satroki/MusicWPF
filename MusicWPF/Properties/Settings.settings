@@ -29,5 +29,8 @@
     <Setting Name="Volume" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.2</Value>
     </Setting>
+    <Setting Name="TempPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\xyl29\AppData\Local\Netease\CloudMusic\Temp</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

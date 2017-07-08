@@ -106,8 +106,9 @@ namespace MusicWPF
                 var del = oldLines.Except(newLines).Select(ol => dict[ol]);
                 var add = newLines.Except(oldLines).Select(nl => MDModel.Model.MusicFile.SingleOrDefault(m => m.FullName == nl));
 
-                foreach (var di in del)
-                    pl.ListFiles.Remove(di);
+                MDModel.Model.ListFiles.RemoveRange(del);
+                //foreach (var di in del)
+                //    pl.ListFiles.Remove(di);
                 count += MDModel.Model.SaveChanges();
 
                 foreach (var ai in add)

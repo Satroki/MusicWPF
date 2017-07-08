@@ -8,6 +8,7 @@
         Title="MainWindow" Background="Transparent" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded" Closing="Window_Closing" KeyDown="window_KeyDown">
     <Window.Resources>
         <local:TimeSpanToDouble x:Key="TS2D"/>
+        <local:VisibilityConverter x:Key="STC"/>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="1,0,0,0"/>
             <Setter Property="Height" Value="25"/>
@@ -60,16 +61,18 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <Label Grid.Row="0" FontSize="22.5pt" x:Name="lLrc"
-               Content="{Binding LrcContent}" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Foreground="#FFE2FFB7"
-               Height="38" Background="#B0000000" Padding="5,0">
-            <Label.ContextMenu>
-                <ContextMenu FontSize="9pt">
-                    <MenuItem Header="复制" Click="miCopyLrc_Click"/>
-                </ContextMenu>
-            </Label.ContextMenu>
-        </Label>
+        <Border Visibility="{Binding LrcContent,Converter={StaticResource STC}}" HorizontalAlignment="Center"
+                VerticalAlignment="Top" Background="#B0000000" Padding="8,2">
+            <Label Grid.Row="0" FontSize="22.5pt" x:Name="lLrc"
+               Content="{Binding LrcContent}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFE2FFB7"
+               Height="38" Padding="0">
+                <Label.ContextMenu>
+                    <ContextMenu FontSize="9pt">
+                        <MenuItem Header="复制" Click="miCopyLrc_Click"/>
+                    </ContextMenu>
+                </Label.ContextMenu>
+            </Label>
+        </Border>
 
         <Grid Width="400" Grid.Row="1" Background="{DynamicResource BgBrush}" MouseLeftButtonDown="grid_MouseLeftButtonDown">
             <Grid.ToolTip>

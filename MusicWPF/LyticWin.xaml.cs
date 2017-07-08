@@ -1,4 +1,5 @@
 ﻿using MusicWPF.Models;
+using MusicWPF.Properties;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -17,7 +18,7 @@ namespace MusicWPF
         public LyricWin(MusicFile mf)
         {
             InitializeComponent();
-            lrcTemp = @"D:\Program Files (x86)\Netease\CloudMusic\Netease\CloudMusic\Temp";
+            lrcTemp = Settings.Default.TempPath;
             fsw.Path = lrcTemp;
             fsw.Created += Fsw_Created;
             loadMF(mf);
